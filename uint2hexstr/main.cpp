@@ -11,7 +11,7 @@
 /*
 hexstr_uint32()
 
-ループせずに uint32_t を16進文字列に変換する
+Converts uint32_t to a hexadecimal string without looping.
 
  */
 

@@ -1,5 +1,11 @@
 #include "hexstr_uint32.h"
 
+/*
+hexstr_uint32()
+
+Converts uint32_t to a hexadecimal string without looping.
+
+ */
 uint32_t hexstr_uint32( char *buffer, size_t buffer_size, uint32_t x )
 {
 	if ( ! buffer ){
