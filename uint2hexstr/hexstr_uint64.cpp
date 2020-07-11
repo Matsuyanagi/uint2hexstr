@@ -6,12 +6,12 @@ hexstr_uint64()
 Converts uint64_t to a hexadecimal string without looping.
 
  */
-uint64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
+int64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
 {
 	if ( ! buffer ){
 		return -1;
 	}
-	if ( buffer_size <= sizeof( uint64_t ) * 2 ){
+	if ( buffer_size < sizeof( uint64_t ) * 2 ){
 		return -1;
 	}
 	uint64_t x_expand = _pdep_u64( x >> 32, 0x0F0F0F0F0F0F0F0F );
@@ -39,7 +39,7 @@ uint64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
 	x_expand = _byteswap_uint64( x_expand );
 
 	memcpy( buffer + sizeof( uint64_t ), reinterpret_cast<char*>( &x_expand ), sizeof( uint64_t ) * 2 );
-	
+
 	return 0;
 }
 

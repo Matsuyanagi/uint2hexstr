@@ -96,12 +96,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="hexstr_m128.cpp" />
     <ClCompile Include="hexstr_uint32.cpp" />
     <ClCompile Include="hexstr_uint64.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="hexstr_m128.h" />
     <ClInclude Include="hexstr_uint32.h" />
+    <ClInclude Include="hexstr_uint64.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,12 +6,12 @@ hexstr_uint32()
 Converts uint32_t to a hexadecimal string without looping.
 
  */
-uint32_t hexstr_uint32( char *buffer, size_t buffer_size, uint32_t x )
+int32_t hexstr_uint32( char *buffer, size_t buffer_size, uint32_t x )
 {
 	if ( ! buffer ){
 		return -1;
 	}
-	if ( buffer_size <= sizeof( uint32_t ) * 2 ){
+	if ( buffer_size < sizeof( uint32_t ) * 2 ){
 		return -1;
 	}
 	uint64_t x_expand = _pdep_u64( x, 0x0F0F0F0F0F0F0F0F );

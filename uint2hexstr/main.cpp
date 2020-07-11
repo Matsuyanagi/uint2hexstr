@@ -7,6 +7,8 @@
 #include <vector>
 
 #include "./hexstr_uint32.h"
+#include "./hexstr_uint64.h"
+#include "./hexstr_m128.h"
 
 /*
 hexstr_uint32()
@@ -80,4 +82,7 @@ int main() {
 	std::cout << sprintf_str( x ).c_str() << std::endl;
 	std::cout << hex_array_str( x ).c_str() << std::endl;
 	std::cout << hexstr_uint32( x ).c_str() << std::endl;
+
+	std::cout << hexstr_m128( _mm_set_epi64x( 0xFEDCBA9876543210, 0x123456789ABCDEF0 ) ).c_str() << std::endl;
+
 }

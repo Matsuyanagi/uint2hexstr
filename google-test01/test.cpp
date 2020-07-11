@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "../uint2hexstr/hexstr_uint32.h"
 #include "../uint2hexstr/hexstr_uint64.h"
+#include "../uint2hexstr/hexstr_m128.h"
 
 std::string sprintf_str32( uint32_t x )
 {
@@ -14,6 +15,17 @@ std::string sprintf_str64( uint64_t x )
   char buffer[ sizeof( uint64_t ) * 2 + 1 ];
 	sprintf( buffer, "%016llX", x );
 	return std::string( buffer, sizeof( uint64_t ) * 2 );
+}
+
+std::string sprintf_str128( __m128i x )
+{
+  char buffer[ sizeof( __m128i ) * 2 + 1 ];
+  uint64_t u64[2];
+  memcpy( &u64, &x, sizeof(__m128i) );
+  
+	sprintf( buffer, "%016llX%016llX", u64[1], u64[0] );
+  
+	return std::string( buffer, sizeof( __m128i ) * 2 );
 }
 
 TEST(TestCaseUint32, TestUint32Eq) {
@@ -52,3 +64,20 @@ TEST(TestCaseUint64, TestUint64Eq) {
   EXPECT_EQ( sprintf_str64( 0x8001'8001'8001'8001 ), hexstr_uint64( 0x8001'8001'8001'8001 ) );
 }
 
+TEST(TestCaseM128, TestM128) {
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000000 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000000 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000001 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000001 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000002 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000002 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000000, 0x000000000000000F ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000000, 0x000000000000000F ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x8000000000000000, 0x0000000000000000 ) ), hexstr_m128( _mm_set_epi64x( 0x8000000000000000, 0x0000000000000000 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x8000000000000000, 0x0000000000000001 ) ), hexstr_m128( _mm_set_epi64x( 0x8000000000000000, 0x0000000000000001 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000001, 0x0000000000000000 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000001, 0x0000000000000000 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000001, 0x8000000000000000 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000001, 0x8000000000000000 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0xF000000000000000, 0x0000000000000000 ) ), hexstr_m128( _mm_set_epi64x( 0xF000000000000000, 0x0000000000000000 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0xFDB97531ECA86420, 0x1234FEDC5678BA98 ) ), hexstr_m128( _mm_set_epi64x( 0xFDB97531ECA86420, 0x1234FEDC5678BA98 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0xFEDCBA9876543210, 0x123456789ABCDEF0 ) ), hexstr_m128( _mm_set_epi64x( 0xFEDCBA9876543210, 0x123456789ABCDEF0 ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0xFFFFFFFFFFFFFFFF, 0xFFFFFFFFFFFFFFFF ) ), hexstr_m128( _mm_set_epi64x( 0xFFFFFFFFFFFFFFFF, 0xFFFFFFFFFFFFFFFF ) ) );
+  EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x1111111111111111, 0x1111111111111111 ) ), hexstr_m128( _mm_set_epi64x( 0x1111111111111111, 0x1111111111111111 ) ) );
+
+  
+}
