@@ -21,6 +21,9 @@
     <ClCompile Include="hexstr_uint32.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="hexstr_uint64.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hexstr_uint32.h">
