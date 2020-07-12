@@ -42,43 +42,11 @@ std::string hex_array_str( uint32_t x )
 
 int main() {
 
-    uint64_t x = 0;
-    std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 1;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0x8000'0000;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0xF000'0000;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0x1234'5678;
+	uint64_t x = 0x1234'5678;
 	std::cout << sprintf_str( x ).c_str() << std::endl;
 	std::cout << hex_array_str( x ).c_str() << std::endl;
 	std::cout << hexstr_uint32( x ).c_str() << std::endl;
 	x = 0xFEDC'BA98;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0x0000'000F;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0xA531'1230;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0xC000'8901;
-	std::cout << sprintf_str( x ).c_str() << std::endl;
-	std::cout << hex_array_str( x ).c_str() << std::endl;
-	std::cout << hexstr_uint32( x ).c_str() << std::endl;
-	x = 0x0123'FED0;
 	std::cout << sprintf_str( x ).c_str() << std::endl;
 	std::cout << hex_array_str( x ).c_str() << std::endl;
 	std::cout << hexstr_uint32( x ).c_str() << std::endl;
