@@ -25,7 +25,7 @@ int64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
 	x_expand += 0x30303030'30303030;
 	x_expand = _byteswap_uint64( x_expand );
 
-	memcpy( buffer, reinterpret_cast<char*>( &x_expand ), sizeof( uint64_t ) * 2 );
+	memcpy( buffer, reinterpret_cast<char*>( &x_expand ), sizeof( uint64_t ) );
 
 	x_expand = _pdep_u64( x, 0x0F0F0F0F0F0F0F0F );
 
@@ -38,7 +38,7 @@ int64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
 	x_expand += 0x30303030'30303030;
 	x_expand = _byteswap_uint64( x_expand );
 
-	memcpy( buffer + sizeof( uint64_t ), reinterpret_cast<char*>( &x_expand ), sizeof( uint64_t ) * 2 );
+	memcpy( buffer + sizeof( uint64_t ), reinterpret_cast<char*>( &x_expand ), sizeof( uint64_t ) );
 
 	return 0;
 }
