@@ -64,6 +64,24 @@ TEST(TestCaseUint64, TestUint64Eq) {
   EXPECT_EQ( sprintf_str64( 0x8001'8001'8001'8001 ), hexstr_uint64( 0x8001'8001'8001'8001 ) );
 }
 
+TEST(TestCaseUint64, TestSseUint64Eq) {
+  EXPECT_EQ( sprintf_str64( 0 ), hexstr_sse_uint64( 0 ) );
+  EXPECT_EQ( sprintf_str64( 1 ), hexstr_sse_uint64( 1 ) );
+  EXPECT_EQ( sprintf_str64( 2 ), hexstr_sse_uint64( 2 ) );
+  EXPECT_EQ( sprintf_str64( 0x0F ), hexstr_sse_uint64( 0x0F ) );
+  EXPECT_EQ( sprintf_str64( 0x8000'0000'0000'0000 ), hexstr_sse_uint64( 0x8000'0000'0000'0000 ) );
+  EXPECT_EQ( sprintf_str64( 0xF000'0000'0000'0000 ), hexstr_sse_uint64( 0xF000'0000'0000'0000 ) );
+  EXPECT_EQ( sprintf_str64( 0x1234'5678'9ABC'DEF0 ), hexstr_sse_uint64( 0x1234'5678'9ABC'DEF0 ) );
+  EXPECT_EQ( sprintf_str64( 0xFEDC'BA98'7654'3210 ), hexstr_sse_uint64( 0xFEDC'BA98'7654'3210 ) );
+  EXPECT_EQ( sprintf_str64( 0xA531'1230'0321'135A ), hexstr_sse_uint64( 0xA531'1230'0321'135A ) );
+  EXPECT_EQ( sprintf_str64( 0xC000'8901'0FF0'FFFF ), hexstr_sse_uint64( 0xC000'8901'0FF0'FFFF ) );
+  EXPECT_EQ( sprintf_str64( 0x0123'4567'89AB'CDEF ), hexstr_sse_uint64( 0x0123'4567'89AB'CDEF ) );
+  EXPECT_EQ( sprintf_str64( 0x8000'0000'0000'0001 ), hexstr_sse_uint64( 0x8000'0000'0000'0001 ) );
+  EXPECT_EQ( sprintf_str64( 0xFFFF'FFFF'FFFF'FFFF ), hexstr_sse_uint64( 0xFFFF'FFFF'FFFF'FFFF ) );
+  EXPECT_EQ( sprintf_str64( 0xFFFF'FFFF'FFFF'FFFE ), hexstr_sse_uint64( 0xFFFF'FFFF'FFFF'FFFE ) );
+  EXPECT_EQ( sprintf_str64( 0x8001'8001'8001'8001 ), hexstr_sse_uint64( 0x8001'8001'8001'8001 ) );
+}
+
 TEST(TestCaseM128, TestM128) {
   EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000000 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000000 ) ) );
   EXPECT_EQ( sprintf_str128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000001 ) ), hexstr_m128( _mm_set_epi64x( 0x0000000000000000, 0x0000000000000001 ) ) );
