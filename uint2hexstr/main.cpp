@@ -47,5 +47,11 @@ int main() {
 	std::cout << hex_array_str( x ).c_str() << std::endl;
 	std::cout << hexstr_uint32( x ).c_str() << std::endl;
 
+	std::cout << hexstr_uint64( 0x1234'5678'9ABC'DEF0 ).c_str() << std::endl;
+	std::cout << hexstr_sse_uint64( 0x1234'5678'9ABC'DEF0 ).c_str() << std::endl;
+
 	std::cout << hexstr_m128( _mm_set_epi64x( 0xFEDCBA9876543210, 0x123456789ABCDEF0 ) ).c_str() << std::endl;
+
+	std::cout << hexstr_m256(
+	    _mm256_set_epi64x( 0xFEDCBA9876543210, 0x123456789ABCDEF0, 0x76543210FEDCBA98, 0xFDB97531ECA86420 ) ).c_str() << std::endl;
 }
