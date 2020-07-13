@@ -1,8 +1,8 @@
 ---
 BasedOnStyle:           Google
 IndentWidth:            4
-SpacesInParentheses     true
-SpacesInSquareBrackets  true
+SpacesInParentheses:    true
+SpacesInSquareBrackets: true
 TabWidth:               4
 UseTab:                 UT_ForIndentation
 ---
