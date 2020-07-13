@@ -4,7 +4,8 @@ IndentWidth:            4
 SpacesInParentheses:    true
 SpacesInSquareBrackets: true
 TabWidth:               4
-UseTab:                 UT_ForIndentation
+UseTab:                 ForIndentation
 ---
 Language:               Cpp
+ColumnLimit:            120
 
