@@ -17,8 +17,7 @@ int64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
 	uint64_t x_expand = _pdep_u64( x >> 32, 0x0F0F0F0F0F0F0F0F );
 
 	uint64_t mask = 0x19191919'19191919 - x_expand;
-	mask &= 0x10101010'10101010;
-	mask ^= 0x10101010'10101010;
+	mask = _andn_u64( mask, 0x10101010'10101010 );
 	mask >>= 4;
 	mask *= 7;
 	x_expand += mask;
@@ -30,8 +29,7 @@ int64_t hexstr_uint64( char *buffer, size_t buffer_size, uint64_t x )
 	x_expand = _pdep_u64( x, 0x0F0F0F0F0F0F0F0F );
 
 	mask = 0x19191919'19191919 - x_expand;
-	mask &= 0x10101010'10101010;
-	mask ^= 0x10101010'10101010;
+	mask = _andn_u64( mask, 0x10101010'10101010 );
 	mask >>= 4;
 	mask *= 7;
 	x_expand += mask;
